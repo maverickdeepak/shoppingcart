@@ -1,0 +1,13 @@
+footer {
+  background-color: $color-light-grey;
+  padding: 1.8rem 0;
+  .main {
+    p {
+      font-size: 1.6rem;
+      color: $color-black;
+      @media only screen and (max-width: $bp-med) {
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,558 @@
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+
+(function(modules, entry, mainEntry, parcelRequireName, globalName) {
+  /* eslint-disable no-undef */
+  var globalObject =
+    typeof globalThis !== 'undefined'
+      ? globalThis
+      : typeof self !== 'undefined'
+      ? self
+      : typeof window !== 'undefined'
+      ? window
+      : typeof global !== 'undefined'
+      ? global
+      : {};
+  /* eslint-enable no-undef */
+
+  // Save the require from previous bundle to this closure if any
+  var previousRequire =
+    typeof globalObject[parcelRequireName] === 'function' &&
+    globalObject[parcelRequireName];
+
+  var cache = previousRequire.cache || {};
+  // Do not use `require` to prevent Webpack from trying to bundle this call
+  var nodeRequire =
+    typeof module !== 'undefined' &&
+    typeof module.require === 'function' &&
+    module.require.bind(module);
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire =
+          typeof globalObject[parcelRequireName] === 'function' &&
+          globalObject[parcelRequireName];
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+      localRequire.cache = {};
+
+      var module = (cache[name] = new newRequire.Module(name));
+
+      modules[name][0].call(
+        module.exports,
+        localRequire,
+        module,
+        module.exports,
+        this,
+      );
+    }
+
+    return cache[name].exports;
+
+    function localRequire(x) {
+      return newRequire(localRequire.resolve(x));
+    }
+
+    function resolve(x) {
+      return modules[name][1][x] || x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function(id, exports) {
+    modules[id] = [
+      function(require, module) {
+        module.exports = exports;
+      },
+      {},
+    ];
+  };
+
+  Object.defineProperty(newRequire, 'root', {
+    get: function() {
+      return globalObject[parcelRequireName];
+    },
+  });
+
+  globalObject[parcelRequireName] = newRequire;
+
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
+
+  if (mainEntry) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(mainEntry);
+
+    // CommonJS
+    if (typeof exports === 'object' && typeof module !== 'undefined') {
+      module.exports = mainExports;
+
+      // RequireJS
+    } else if (typeof define === 'function' && define.amd) {
+      define(function() {
+        return mainExports;
+      });
+
+      // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+})({"45BXQ":[function(require,module,exports) {
+var HMR_HOST = null;
+var HMR_PORT = null;
+var HMR_SECURE = false;
+var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
+module.bundle.HMR_BUNDLE_ID = "4c104f4fb4a099c0c1e8f0f88d7130a5"; // @flow
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+import type {
+  HMRAsset,
+  HMRMessage,
+} from '@parcel/reporter-dev-server/src/HMRServer.js';
+interface ParcelRequire {
+  (string): mixed;
+  cache: {|[string]: ParcelModule|};
+  hotData: mixed;
+  Module: any;
+  parent: ?ParcelRequire;
+  isParcelRequire: true;
+  modules: {|[string]: [Function, {|[string]: string|}]|};
+  HMR_BUNDLE_ID: string;
+  root: ParcelRequire;
+}
+interface ParcelModule {
+  hot: {|
+    data: mixed,
+    accept(cb: (Function) => void): void,
+    dispose(cb: (mixed) => void): void,
+    // accept(deps: Array<string> | string, cb: (Function) => void): void,
+    // decline(): void,
+    _acceptCallbacks: Array<(Function) => void>,
+    _disposeCallbacks: Array<(mixed) => void>,
+  |};
+}
+declare var module: {bundle: ParcelRequire, ...};
+declare var HMR_HOST: string;
+declare var HMR_PORT: string;
+declare var HMR_ENV_HASH: string;
+declare var HMR_SECURE: boolean;
+*/ var OVERLAY_ID = '__parcel__error__overlay__';
+var OldModule = module.bundle.Module;
+function Module(moduleName) {
+    OldModule.call(this, moduleName);
+    this.hot = {
+        data: module.bundle.hotData,
+        _acceptCallbacks: [],
+        _disposeCallbacks: [],
+        accept: function(fn) {
+            this._acceptCallbacks.push(fn || function() {
+            });
+        },
+        dispose: function(fn) {
+            this._disposeCallbacks.push(fn);
+        }
+    };
+    module.bundle.hotData = undefined;
+}
+module.bundle.Module = Module;
+var checkedAssets/*: {|[string]: boolean|} */ , acceptedAssets/*: {|[string]: boolean|} */ , assetsToAccept/*: Array<[ParcelRequire, string]> */ ;
+function getHostname() {
+    return HMR_HOST || (location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
+}
+function getPort() {
+    return HMR_PORT || location.port;
+}
+// eslint-disable-next-line no-redeclare
+var parent = module.bundle.parent;
+if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
+    var hostname = getHostname();
+    var port = getPort();
+    var protocol = HMR_SECURE || location.protocol == 'https:' && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? 'wss' : 'ws';
+    var ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/');
+    // $FlowFixMe
+    ws.onmessage = function(event/*: {data: string, ...} */ ) {
+        checkedAssets = {
+        };
+        acceptedAssets = {
+        };
+        assetsToAccept = [];
+        var data = JSON.parse(event.data);
+        if (data.type === 'update') {
+            // Remove error overlay if there is one
+            removeErrorOverlay();
+            let assets = data.assets.filter((asset)=>asset.envHash === HMR_ENV_HASH
+            );
+            // Handle HMR Update
+            var handled = false;
+            assets.forEach((asset)=>{
+                var didAccept = asset.type === 'css' || asset.type === 'js' && hmrAcceptCheck(module.bundle.root, asset.id, asset.depsByBundle);
+                if (didAccept) handled = true;
+            });
+            if (handled) {
+                console.clear();
+                assets.forEach(function(asset) {
+                    hmrApply(module.bundle.root, asset);
+                });
+                for(var i = 0; i < assetsToAccept.length; i++){
+                    var id = assetsToAccept[i][1];
+                    if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
+                }
+            } else window.location.reload();
+        }
+        if (data.type === 'error') {
+            // Log parcel errors to console
+            for (let ansiDiagnostic of data.diagnostics.ansi){
+                let stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
+                console.error('🚨 [parcel]: ' + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
+            }
+            // Render the fancy html overlay
+            removeErrorOverlay();
+            var overlay = createErrorOverlay(data.diagnostics.html);
+            // $FlowFixMe
+            document.body.appendChild(overlay);
+        }
+    };
+    ws.onerror = function(e) {
+        console.error(e.message);
+    };
+    ws.onclose = function(e) {
+        console.warn('[parcel] 🚨 Connection to the HMR server was lost');
+    };
+}
+function removeErrorOverlay() {
+    var overlay = document.getElementById(OVERLAY_ID);
+    if (overlay) {
+        overlay.remove();
+        console.log('[parcel] ✨ Error resolved');
+    }
+}
+function createErrorOverlay(diagnostics) {
+    var overlay = document.createElement('div');
+    overlay.id = OVERLAY_ID;
+    let errorHTML = '<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">';
+    for (let diagnostic of diagnostics){
+        let stack = diagnostic.codeframe ? diagnostic.codeframe : diagnostic.stack;
+        errorHTML += `\n      <div>\n        <div style="font-size: 18px; font-weight: bold; margin-top: 20px;">\n          🚨 ${diagnostic.message}\n        </div>\n        <pre>\n          ${stack}\n        </pre>\n        <div>\n          ${diagnostic.hints.map((hint)=>'<div>' + hint + '</div>'
+        ).join('')}\n        </div>\n      </div>\n    `;
+    }
+    errorHTML += '</div>';
+    overlay.innerHTML = errorHTML;
+    return overlay;
+}
+function getParents(bundle, id) /*: Array<[ParcelRequire, string]> */ {
+    var modules = bundle.modules;
+    if (!modules) return [];
+    var parents = [];
+    var k, d, dep;
+    for(k in modules)for(d in modules[k][1]){
+        dep = modules[k][1][d];
+        if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) parents.push([
+            bundle,
+            k
+        ]);
+    }
+    if (bundle.parent) parents = parents.concat(getParents(bundle.parent, id));
+    return parents;
+}
+function updateLink(link) {
+    var newLink = link.cloneNode();
+    newLink.onload = function() {
+        if (link.parentNode !== null) // $FlowFixMe
+        link.parentNode.removeChild(link);
+    };
+    newLink.setAttribute('href', // $FlowFixMe
+    link.getAttribute('href').split('?')[0] + '?' + Date.now());
+    // $FlowFixMe
+    link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+    if (cssTimeout) return;
+    cssTimeout = setTimeout(function() {
+        var links = document.querySelectorAll('link[rel="stylesheet"]');
+        for(var i = 0; i < links.length; i++){
+            // $FlowFixMe[incompatible-type]
+            var href = links[i].getAttribute('href');
+            var hostname = getHostname();
+            var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            if (!absolute) updateLink(links[i]);
+        }
+        cssTimeout = null;
+    }, 50);
+}
+function hmrApply(bundle/*: ParcelRequire */ , asset/*:  HMRAsset */ ) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (asset.type === 'css') {
+        reloadCSS();
+        return;
+    }
+    let deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
+    if (deps) {
+        var fn = new Function('require', 'module', 'exports', asset.output);
+        modules[asset.id] = [
+            fn,
+            deps
+        ];
+    } else if (bundle.parent) hmrApply(bundle.parent, asset);
+}
+function hmrAcceptCheck(bundle/*: ParcelRequire */ , id/*: string */ , depsByBundle/*: ?{ [string]: { [string]: string } }*/ ) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
+        // If we reached the root bundle without finding where the asset should go,
+        // there's nothing to do. Mark as "accepted" so we don't reload the page.
+        if (!bundle.parent) return true;
+        return hmrAcceptCheck(bundle.parent, id, depsByBundle);
+    }
+    if (checkedAssets[id]) return;
+    checkedAssets[id] = true;
+    var cached = bundle.cache[id];
+    assetsToAccept.push([
+        bundle,
+        id
+    ]);
+    if (cached && cached.hot && cached.hot._acceptCallbacks.length) return true;
+    return getParents(module.bundle.root, id).some(function(v) {
+        return hmrAcceptCheck(v[0], v[1], null);
+    });
+}
+function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
+    var cached = bundle.cache[id];
+    bundle.hotData = {
+    };
+    if (cached && cached.hot) cached.hot.data = bundle.hotData;
+    if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
+        cb(bundle.hotData);
+    });
+    delete bundle.cache[id];
+    bundle(id);
+    cached = bundle.cache[id];
+    if (cached && cached.hot && cached.hot._acceptCallbacks.length) cached.hot._acceptCallbacks.forEach(function(cb) {
+        var assetsToAlsoAccept = cb(function() {
+            return getParents(module.bundle.root, id);
+        });
+        if (assetsToAlsoAccept && assetsToAccept.length) assetsToAccept.push.apply(assetsToAccept, assetsToAlsoAccept);
+    });
+    acceptedAssets[id] = true;
+}
+
+},{}],"3iimy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _sliderJs = require("./slider.js");
+var _sliderJsDefault = parcelHelpers.interopDefault(_sliderJs);
+var _productsJs = require("./products.js");
+var _productsJsDefault = parcelHelpers.interopDefault(_productsJs);
+_sliderJsDefault.default();
+_productsJsDefault.default();
+
+},{"./slider.js":"5sD79","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./products.js":"4Iw5E"}],"5sD79":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function slider() {
+    let SliderContainer = document.querySelector('.section__slider');
+    // Images Area Images
+    let imagesAreaImages = document.querySelectorAll('.images-area img');
+    // Images Area First Image
+    let imagesAreaFirstImage = document.querySelector('.images-area .firstImage');
+    // Previous And Next Buttons
+    let previousBtn = document.querySelector('.previous-btn');
+    let nextBtn = document.querySelector('.next-btn');
+    // Pagination Area 
+    let paginationArea = document.querySelector('.pagination-area');
+    // Current Image Count
+    let currentImageCount = 1;
+    // Slider Controler Function
+    let sliderController;
+    // Create Pagination Spans Function
+    let createPaginationSpans;
+    // Every Click On Buttons
+    if (SliderContainer) {
+        previousBtn.addEventListener('click', previousImage);
+        nextBtn.addEventListener('click', nextImage);
+        // Previous Image Function
+        function previousImage() {
+            // If The currentImageCount Is 1
+            if (currentImageCount === 1) return false;
+            else {
+                // Minus One From currentImageCount
+                currentImageCount--;
+                // Call Function sliderController();
+                sliderController();
+            }
+        }
+        // Next Image Function
+        function nextImage() {
+            // If The currentImageCount Is imagesAreaImages.length
+            if (currentImageCount === imagesAreaImages.length) return false;
+            else {
+                // Plus One To currentImageCount
+                currentImageCount++;
+                // Call Function sliderController();
+                sliderController();
+            }
+        }
+        // Create Pagination Spans [Circls] Function
+        (function createPaginationSpans1() {
+            // Loop On All The Images Slider
+            for(var i = 0; i < imagesAreaImages.length; i++){
+                // Create Span 
+                let paginationSpan = document.createElement('span');
+                // Append The Span
+                paginationArea.appendChild(paginationSpan);
+            }
+        })();
+        // Slider Controler Function
+        (sliderController = function() {
+            // Get All The pagination Spans
+            let paginationCircls = document.querySelectorAll('.pagination-area span');
+            // Call Remore All Active Class Function
+            removeAllActive(paginationCircls);
+            // Call Remore Active Button Function
+            activeButton();
+            // The currentImageCount Minus One
+            let currentImageMinusOne = currentImageCount - 1;
+            // Set Active Class On Current Pagination
+            paginationCircls[currentImageMinusOne].classList.add('active');
+            // Move The images Area First Image
+            imagesAreaFirstImage.style.marginLeft = `-${1170 * currentImageMinusOne}px`;
+            console.log(1170 * currentImageMinusOne);
+        })();
+        // Remove All Active Class Function
+        function removeAllActive(targetElement) {
+            for(var i = 0; i < targetElement.length; i++)targetElement[i].classList.remove('active');
+        }
+        // Check Active Button Function
+        function activeButton() {
+            // If The Current Image Count Equle 1
+            currentImageCount === 1 ? // Hide The Previous Button
+            previousBtn.classList.add('disabled') : // Else: Show The Previous Button
+            previousBtn.classList.remove('disabled');
+            // If The Current Image Count Equle imagesAreaImages.length
+            currentImageCount === imagesAreaImages.length ? // Hide The Next Button
+            nextBtn.classList.add('disabled') : // Else: Show The Next Button
+            nextBtn.classList.remove('disabled');
+        }
+        // Move Slider Image Every 3 Second 
+        setInterval(()=>{
+            // If The Current Image Count Not Equle imagesAreaImages.length
+            if (currentImageCount != imagesAreaImages.length) {
+                // Plus One
+                currentImageCount++;
+                // Call Function sliderController();
+                sliderController();
+            } else {
+                // Make currentImageCount Equle 1
+                currentImageCount = 1;
+                // Call Function sliderController();
+                sliderController();
+            }
+        }, 5000);
+    }
+}
+exports.default = slider;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"367CR":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"4Iw5E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    if (productContainer) {
+        const fs = require('fs');
+        const json_data = require('../../server/products/index.get.json');
+        fs.readFile(json_data, 'utf8', function(err, data) {
+            try {
+                data = JSON.parse(data);
+                for(let i in data)console.log('Name:', data[i].name);
+            } catch (e) {
+            // Catch error in case file doesn't exist or isn't valid JSON
+            }
+        });
+    }
+}
+exports.default = products;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR","fs":"2RD6T","../../server/products/index.get.json":"2THSr"}],"2RD6T":[function(require,module,exports) {
+"use strict";
+
+},{}],"2THSr":[function(require,module,exports) {
+module.exports = JSON.parse("[{\"name\":\"Fresho Kiwi - Green, 3 pcs\",\"imageURL\":\"/static/images/products/fruit-n-veg/kiwi-green.jpg\",\"description\":\"Kiwis are oval shaped with a brownish outer skin. The flesh is bright green and juicy with tiny, edible black seeds.\",\"price\":87,\"stock\":50,\"category\":\"5b6899953d1a866534f516e2\",\"sku\":\"fnw-kiwi-3\",\"id\":\"5b6c6a7f01a7c38429530883\"},{\"name\":\"Apple - Washington, Regular, 4 pcs\",\"imageURL\":\"/static/images/products/fruit-n-veg/apple.jpg\",\"description\":\"The bright red coloured and heart shaped Washington apples are crunchy, juicy and slightly sweet. Washington Apples are a natural source of fibre and are fat free.\",\"price\":187,\"stock\":50,\"category\":\"5b6899953d1a866534f516e2\",\"sku\":\"fnw-apple-4\",\"id\":\"5b6c6aeb01a7c38429530884\"},{\"name\":\"Fresho Pomegrante Peeled, 500 gm \",\"imageURL\":\"/static/images/products/fruit-n-veg/pomegrante.jpg\",\"description\":\"Pomegranate variety has a glossy, vibrant and soft ruby-red skin. The inside of the fruit is divided into compartments by thin white membranes.\",\"price\":88,\"stock\":50,\"category\":\"5b6899953d1a866534f516e2\",\"sku\":\"fnw-pomegranate-500\",\"id\":\"5b6c6b7001a7c38429530885\"},{\"name\":\"Capsicum - Green, 1 kg\",\"imageURL\":\"/static/images/products/fruit-n-veg/capsicum-green.jpg\",\"description\":\"Leaving a moderately pungent taste on the tongue, Green capsicums, also known as green peppers are bell shaped, medium-sized fruit pods.\",\"price\":137,\"stock\":50,\"category\":\"5b6899953d1a866534f516e2\",\"sku\":\"fnw-capsicum-1\",\"id\":\"5b6c6bdc01a7c38429530886\"},{\"name\":\"Tomato - Local, Organically Grown, 500 gm\",\"imageURL\":\"/static/images/products/fruit-n-veg/capsicum-green.jpg\",\"description\":\"Fresho brings to you an exquisite range of locally grown organic tomatoes, which are now available at bigbasket. These organic tomatoes are free from harmful pesticides and insecticides.\",\"price\":12,\"stock\":50,\"category\":\"5b6899953d1a866534f516e2\",\"sku\":\"fnw-tomatoes-500\",\"id\":\"5b6c6c1801a7c38429530887\"},{\"name\":\"Sandwich Bread - White, Chemical Free, 400 gm\",\"imageURL\":\"/static/images/products/bakery-cakes-dairy/bread.jpg\",\"description\":\"Freshly Baked bread is one of lifes greatest simple pleasures and at Bigbasket we decided to give you just that. We start baking our breads once you order using the finest ingredients available.\",\"price\":32,\"stock\":50,\"category\":\"5b6899123d1a866534f516de\",\"sku\":\"bcd-bread-400\",\"id\":\"5b6c6d3201a7c38429530888\"},{\"name\":\"Organic Fresh Paneer, 200 gm \",\"imageURL\":\"/static/images/products/bakery-cakes-dairy/paneer.jpg\",\"description\":\"Freshly Baked bread is one of lifes greatest simple pleasures and at Bigbasket we deFresho Organic Milk is sourced from farms that have been certified organic for over 8 years. All feed is naturally grown with no pesticides or fertilizers.\",\"price\":98,\"stock\":50,\"category\":\"5b6899123d1a866534f516de\",\"sku\":\"bcd-paneer-200\",\"id\":\"5b6c6d6201a7c38429530889\"},{\"name\":\"Epigamia Greek Yogurt - Blueberry, 90 gm Cup\",\"imageURL\":\"/static/images/products/bakery-cakes-dairy/yogurt-blue.jpg\",\"description\":\"Epigama means in Ancient Greek meant a way to Formalize the relationship between different nations. Epigamia greek yogurt is one of the most authentic yoghurts which advocates a healthy lifestyle with delicious taste. An excellent source of protein without the added fat.\",\"price\":40,\"stock\":50,\"category\":\"5b6899123d1a866534f516de\",\"sku\":\"bcd-yogurt-blue\",\"id\":\"5b6c6d9e01a7c3842953088a\"},{\"name\":\"Epigamia Greek Yogurt - Strawberry, 90 gm\",\"imageURL\":\"/static/images/products/bakery-cakes-dairy/yogurt-red.jpg\",\"description\":\"Low Fat and High protein delicious and thick Greek Yogurt.\",\"price\":40,\"stock\":50,\"category\":\"5b6899123d1a866534f516de\",\"sku\":\"bcd-yogurt-red\",\"id\":\"5b6c6dd701a7c3842953088b\"},{\"name\":\"Tata Tea Gold Leaf Tea, 500 gm\",\"imageURL\":\"/static/images/products/beverages/tata-tea.jpg\",\"description\":\"Tata Tea Gold is a unique blend of fine Assam tea leaves with special 15%  long leaf.\",\"price\":165,\"stock\":50,\"category\":\"5b675e5e5936635728f9fc30\",\"sku\":\"bev-tata-tea-500\",\"id\":\"5b6c6f4a01a7c3842953088c\"},{\"name\":\"Red Label Tea, 500 gm Carton\",\"imageURL\":\"/static/images/products/beverages/red-label.jpg\",\"description\":\"Brooke Bond Red Label is one of Indias largest selling packaged tea brands. Brooke Bond Red Label Tea is a blend CTC tea with best quality leaves.\",\"price\":205,\"stock\":50,\"category\":\"5b675e5e5936635728f9fc30\",\"sku\":\"bev-red-label-500\",\"id\":\"5b6c6f8301a7c3842953088d\"},{\"name\":\"Bournvita Pro-Health Drink - Chocolate, 2x750 gm\",\"imageURL\":\"/static/images/products/beverages/bournvita.jpg\",\"description\":\"Cadbury Bournvita is a delicious chocolate health drink which is enriched with Vitamin (D,B2,B9,B12). It combines the great taste of chocolate, and goodness of essential nutrients that aid growth and development.\",\"price\":572,\"stock\":50,\"category\":\"5b675e5e5936635728f9fc30\",\"sku\":\"bev-bournvita-750\",\"id\":\"5b6c6fbf01a7c3842953088e\"},{\"name\":\"Coca Cola Soft Drink, 2x1.75 L\",\"imageURL\":\"/static/images/products/beverages/bournvita.jpg\",\"description\":\"Cadbury Bournvita is a delicious chocolate health drink which is enriched with Vitamin (D,B2,B9,B12). It combines the great taste of chocolate, and goodness of essential nutrients that aid growth and development.\",\"price\":150,\"stock\":50,\"category\":\"5b675e5e5936635728f9fc30\",\"sku\":\"coke-175\",\"id\":\"5b6c6fed01a7c3842953088f\"},{\"name\":\"Listerine Mouthwash - Cool Mint, 250 ml\",\"imageURL\":\"/static/images/products/beauty-hygiene/listerine.jpg\",\"description\":\"Listerine Cool mint Antibacterial Mouthwash is rapid & easy to use, a 30 second \\\"slosh\\\" with Listerine after brushing and flossing reaches parts of the mouth that may be missed. Used two times daily, Listerine provides 24-hour defence against plaque and lasting bright breath assurance.\",\"price\":109,\"stock\":50,\"category\":\"5b68994e3d1a866534f516df\",\"sku\":\"bh-listerine-250\",\"id\":\"5b6c715f01a7c38429530890\"},{\"name\":\"TRESemme Shampoo - Keratin Smooth With Argan Oil, 580 ml \",\"imageURL\":\"/static/images/products/beauty-hygiene/shampoo.jpg\",\"description\":\"For the first time, at TRESemme , Our Professional combines luxurious ingredients to give you gorgeously smoother shiny hair every day , infused with keratin protein and lightweight argan oil , our advanced keratin smooth system gently nourishes hair and controls frizz for up to 3 days.\",\"price\":410,\"stock\":50,\"category\":\"5b68994e3d1a866534f516df\",\"sku\":\"bh-tresemme-580\",\"id\":\"5b6c71a101a7c38429530891\"},{\"name\":\"Dove Intense Repair Shampoo 650ml + Bathing Bar Soap Cream Beauty 100G Pack of 3\",\"imageURL\":\"/static/images/products/beauty-hygiene/dove.jpg\",\"description\":\"Dove Cream Beauty Bar combines a gentle cleansing formula with Doves signature 1/4 moisturizing cream to give you softer, smoother and more glowing skin.\",\"price\":622,\"stock\":50,\"category\":\"5b68994e3d1a866534f516df\",\"sku\":\"bh-dove-combo\",\"id\":\"5b6c71e601a7c38429530892\"},{\"name\":\"Premier Facial Tissue - Special, 400 pcs\",\"imageURL\":\"/static/images/products/beauty-hygiene/tissues.jpg\",\"description\":\"Let your beautiful face stay clean Here Premier Special Face Tissues are available, mostly prepared targeting to care for your face which has spongy and delicate skin.\",\"price\":270,\"stock\":50,\"category\":\"5b68994e3d1a866534f516df\",\"sku\":\"bh-tissue-400\",\"id\":\"5b6c721d01a7c38429530893\"},{\"name\":\"Close Up Ever Fresh Red Hot Gel Toothpaste, 150 gm\",\"imageURL\":\"/static/images/products/beauty-hygiene/closeup.jpg\",\"description\":\" Closeup's unique Active Zinc Mouthwash not only cleans deep corners of your mouth of residual germs it also gives you upto 12 Hours Fresh Breath.\",\"price\":82,\"stock\":50,\"category\":\"5b68994e3d1a866534f516df\",\"sku\":\"bh-closeup-150\",\"id\":\"5b6c727801a7c38429530894\"},{\"name\":\"Pampers Diapers Pants - Large Size, Monthly Box Pack, New, 128's pack\",\"imageURL\":\"/static/images/products/baby/pampers.jpg\",\"description\":\"Pampers dry, pants style diapers are the only pants in India with new air channels that provides your baby with breathable dryness overnight.\",\"price\":1999,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-pamper-128\",\"id\":\"5b6c746801a7c38429530895\"},{\"name\":\"Mamypoko Pants Style Diapers - Large, 62 pcs\",\"imageURL\":\"/static/images/products/baby/mamy.jpg\",\"description\":\"MamyPoko Pants Extra Absorb is a Pant Style diaper that can be used most comfortably for the baby at night Because of Powerful slim core that can absorb up to 12 hours, it prevents leakage till morning.\",\"price\":930,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-mamy-62\",\"id\":\"5b6c74d101a7c38429530896\"},{\"name\":\"Johnson & Johnson Baby skincare wipes, 20 pcs\",\"imageURL\":\"/static/images/products/baby/wipes.jpg\",\"description\":\"Johnsons Baby wipes gently cleanse and care for babys delicate skin. As mild as pure water, they can be used safely all over the body, even around eyes.\",\"price\":70,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-wipes-20\",\"id\":\"5b6c750701a7c38429530897\"},{\"name\":\"Nestle Cerelac Stage - 4 Multi Grain & Fruits, 2x300 gm\",\"imageURL\":\"/static/images/products/baby/cerelac.jpg\",\"description\":\"Nestle Multigrain Cerelac enriched with the goodness of five fruits is a complementary food which is given to babies above the age of six months.\",\"price\":478,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-cerelac-300\",\"id\":\"5b6c753c01a7c38429530898\"},{\"name\":\"Baby Dove Baby Bar - Rich Moisture, 50 gm\",\"imageURL\":\"/static/images/products/baby/baby-dove.jpg\",\"description\":\"Gentler and more nourishing than any other baby soap bar, Baby Dove Rich Moisture Baby Bar has a hypoallergenic and pH neutral formula thats ophthalmologist, dermatologist and pediatrician tested too.\",\"price\":30,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-dove-50\",\"id\":\"5b6c758301a7c38429530899\"},{\"name\":\"Johnson's Active Kids Shampoo - Shiny Drops With Argan Oil, 100 ml\",\"imageURL\":\"/static/images/products/baby/shampoo.jpg\",\"description\":\"A hair care product range specifically for kids aged 2 years and above. This mild shiny drops shampoo formula has been developed to boost natural shine & help reduce frizz, leaving hair silky smooth and healthy looking.\",\"price\":95,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-shampoo-100\",\"id\":\"5b6c75e101a7c3842953089a\"},{\"name\":\"Baby Wipes - Cherry Blossom, 2x80 pcs\",\"imageURL\":\"/static/images/products/baby/red-wipes.jpg\",\"description\":\"These Wipes have aloe vera as key ingredient which makes it the best choice for baby hygiene, make-up remover, sanitizing your face and hand after a long drive, sports or any other situation where you need a quick hygiene solution.\",\"price\":300,\"stock\":50,\"category\":\"5b6899683d1a866534f516e0\",\"sku\":\"baby-wipes-red-80\",\"id\":\"5b6c761801a7c3842953089b\"}]");
+
+},{}]},["45BXQ","3iimy"], "3iimy", "parcelRequire921e")
+
+//# sourceMappingURL=index.HASH_REF_4c104f4fb4a099c0c1e8f0f88d7130a5.js.map

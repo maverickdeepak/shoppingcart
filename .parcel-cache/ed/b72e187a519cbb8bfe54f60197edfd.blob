@@ -1,0 +1,38 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    if (productContainer) {
+        // Function for Call the All Categories
+        async function showCategories() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        const getAllCategories = `\n                        <li><a href="#" class="filter">${category.name}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showCategories();
+        // Function for Call the All Products
+        async function showProducts() {
+            const allProductsContainer = document.querySelector('.all-products__container__main');
+            try {
+                await fetch('http://localhost:5000/products').then((response)=>response.json()
+                ).then((data)=>data.map((product)=>{
+                        const getAllProducts = `\n                      <div class="all-products__container__main__product" data-type="${category}">\n                    <div class="title">${name}</div>\n                    <img src="${imageURL}" alt="" class="product__image">\n                    <div class="description">\n                        ${description.substring(0, 100)}\n                    </div>\n                    <div class="priceAndBuyButton">\n                        <div class="priceText">Rs<span class="price">${price}</span></div>\n                        <button class="buyButton" data-price="${price}" data-name="${name}">Buy Now</button>\n                    </div>\n                </div>\n                      `;
+                        allProductsContainer.insertAdjacentHTML('beforebegin', getAllProducts);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showProducts();
+    }
+}
+exports.default = products;

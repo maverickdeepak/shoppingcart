@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabka Bazar</title>
+    <link rel="stylesheet" href="/index.HASH_REF_a1ba4ca22096c7c3cc47da448a6ca7fe.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <img src="/logo.HASH_REF_194daa7462965491f169470a492808e6.png" alt="logo">
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="#">SignIn</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="/cart.HASH_REF_d75ebdce8d7002bb9733e99d65591167.svg" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section__slider">
+            <img src="/offer1.HASH_REF_3fce719a6a94e1e5e6638230148f411f.jpg" alt="Banner">
+        </section>
+        <section class="section__main">
+            <div class="col-left">
+                <img src="/fruits.HASH_REF_c40631c5845117908d771463961bf975.png" alt="Fruits">
+            </div>
+            <div class="col-right">
+                <h4>Fruits and Vegetables</h4>
+                <p>A variety of fresh fruits and vegetables</p>
+                <a href="#" class="btn-primary">Explore fruit-and-veg</a>
+            </div>
+        </section>
+        <section class="section__main">
+            <div class="col-right">
+                <h4>Fruits and Vegetables</h4>
+                <p>A variety of fresh fruits and vegetables</p>
+                <a href="#" class="btn-primary">Explore fruit-and-veg</a>
+            </div>
+            <div class="col-left">
+                <img src="/fruits.HASH_REF_c40631c5845117908d771463961bf975.png" alt="Fruits">
+            </div>
+        </section>
+        <section class="section__main">
+            
+        </section>
+        <section class="section__main">
+            
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html><script src="/index.HASH_REF_42412dc50fd44bf0205308ab01a1c8c0.js"></script>

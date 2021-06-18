@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabka Bazar</title>
+    <link rel="stylesheet" href="/index.HASH_REF_a1ba4ca22096c7c3cc47da448a6ca7fe.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <img src="/logo.HASH_REF_194daa7462965491f169470a492808e6.png" alt="">
+            <div class="menu_items_left">
+                <li>
+                    <a href="#">Home</a>
+                    <a href="#">Products</a>
+                </li>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li>
+                        <a href="#">SignIn</a>
+                        <a href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html><script src="/index.HASH_REF_42412dc50fd44bf0205308ab01a1c8c0.js"></script>

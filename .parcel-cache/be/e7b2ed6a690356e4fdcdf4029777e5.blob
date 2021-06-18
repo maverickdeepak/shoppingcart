@@ -1,0 +1,60 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    if (productContainer) {
+        // Function for Call the All Products
+        async function showProducts() {
+            const allProductsContainer = document.querySelector('.all-products__container__product');
+            try {
+                await fetch('http://localhost:5000/products').then((response)=>response.json()
+                ).then((data)=>data.map((product)=>{
+                        // console.log(product);
+                        const getAllProducts = `\n                        <div class="single-product" data-id="${product.id}">\n                            <h5>${product.name.substring(0, 20)}</h5>\n                            <img src="../..${product.imageURL}" alt="${product.name}">\n                            <p class="descriptions">${product.description.substring(0, 100)}</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">${product.price}</span></p>\n                                <a href="#" class="btn-primary">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
+                        allProductsContainer.insertAdjacentHTML('beforeend', getAllProducts);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showProducts();
+        // Function for Call the All Categories
+        async function showCategories() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        // console.log(category);
+                        const getAllCategories = `\n                        <li class="filter"><a href="#" id="${category.id}">${category.name}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+            // Function for Filter the Products
+            const categoryTitle = document.querySelectorAll('.filter');
+            const allCategoryPosts = document.querySelectorAll('.single-product');
+            function filter() {
+                for(let i = 0; i < categoryTitle.length; i++)categoryTitle[i].addEventListener('click', filterPosts.bind(this, categoryTitle[i]));
+                function filterPosts(item) {
+                    changeActivePosition(item);
+                    console.log(allCategoryPosts);
+                    for(let i1 = 0; i1 < allCategoryPosts.length; i1++){
+                        console.log(allCategoryPosts);
+                        if (allCategoryPosts[i1].getAttribute('data-id') == item.attributes.id.value) allCategoryPosts[i1].style.display = "block";
+                        else allCategoryPosts[i1].style.display = "none";
+                    }
+                }
+                function changeActivePosition(activeItem) {
+                    for(let i1 = 0; i1 < categoryTitle.length; i1++)categoryTitle[i1].classList.remove('active');
+                    activeItem.classList.add('active');
+                }
+            }
+            filter();
+        }
+        showCategories();
+    }
+}
+exports.default = products;

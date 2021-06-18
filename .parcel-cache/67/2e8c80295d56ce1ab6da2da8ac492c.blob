@@ -1,0 +1,2 @@
+var _sliderJs = require("./slider.js");
+_sliderJs.slider();

@@ -1,0 +1,9 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    if (productContainer) fetch("../../server/products/index.get.json").then((res)=>res.json()
+    ).then((data)=>console.log(data)
+    );
+}
+exports.default = products;

@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  // it defines what 1rem is actually
+  font-size: 62.5%; // 1rem = 10px
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: #fff;
+}

@@ -1,0 +1,23 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    if (productContainer) {
+        console.log('Error');
+        async function showProducts() {
+            try {
+                fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        const getAllCategories = `\n                        <li><a href="#" class="filter" data-filter="${category.name}">${catgories}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showProducts();
+    }
+}
+exports.default = products;

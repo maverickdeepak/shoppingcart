@@ -1,0 +1,20 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _sliderJs = require("./slider.js");
+var _sliderJsDefault = parcelHelpers.interopDefault(_sliderJs);
+var _productsJs = require("./products.js");
+var _productsJsDefault = parcelHelpers.interopDefault(_productsJs);
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {
+    myFunction();
+};
+// Get the navbar
+var navbar = document.getElementsByTagName("header");
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+    if (window.pageYOffset >= sticky) navbar.classList.add("sticky");
+    else navbar.classList.remove("sticky");
+}
+_sliderJsDefault.default();
+_productsJsDefault.default();

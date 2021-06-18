@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="6495c517b85342c9abd994eda6b705bd">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="4f7b1b5d68bdc6b987b976644f4e5cd1" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="95e5284da921f2fc40829392dff7520f">SignIn</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="9ef4049ffc6d2f99d3dbebd7c9751464" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="all-products">
+            <div class="all-products__container">
+                <div class="all-products__container__sidebar">
+                    <ul class="all-products__categories">
+                        <li><a href="#" class="filter" data-filter="all">All</a></li>
+                    </ul>
+                </div>
+                <div class="all-products__container__product">
+                    <div class="single-product">
+                        <h5>Fresho Kiwi - Green, 3 Pcs</h5>
+                        <img src="aa15496c4f8e9f7263e5f98efd066156" alt="">
+                        <p class="descriptions">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        <div class="productBottom">
+                            <p>Rs 185</p>
+                            <a href="#" class="btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="single-product">
+                        <h5>Fresho Kiwi - Green, 3 Pcs</h5>
+                        <img src="aa15496c4f8e9f7263e5f98efd066156" alt="">
+                        <p class="descriptions">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        <div class="productBottom">
+                            <p>Rs 185</p>
+                            <a href="#" class="btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="single-product">
+                        <h5>Fresho Kiwi - Green, 3 Pcs</h5>
+                        <img src="aa15496c4f8e9f7263e5f98efd066156" alt="">
+                        <p class="descriptions">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>>
+                        <div class="productBottom">
+                            <p>Rs 185</p>
+                            <a href="#" class="btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="single-product">
+                        <h5>Fresho Kiwi - Green, 3 Pcs</h5>
+                        <img src="aa15496c4f8e9f7263e5f98efd066156" alt="">
+                        <p class="descriptions">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        <div class="productBottom">
+                            <p>Rs 185</p>
+                            <a href="#" class="btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="8461de6cac26acdd8d7caabf261e5caf"></script>
+</body>
+</html>

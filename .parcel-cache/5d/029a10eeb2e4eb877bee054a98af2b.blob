@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabka Bazar</title>
+    <link rel="stylesheet" href="c5a487740cbe25559d2a5d6f92b16334">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <img src="efdbf075b29cb328d56f5507ea43b06f" alt="logo">
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="#">SignIn</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="7f6f6de3b8ae6b96d0aa77e0f534456e" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section__slider">
+            <img src="5a684e54fcbcfa2144569a3adf1d0cf0" alt="Banner">
+        </section>
+        <section class="section__main">
+            <div class="col-left">
+                <img src="5fcfb5dc0d4bee79430f87083a03b6f6" alt="Fruits">
+            </div>
+            <div class="col-right">
+
+            </div>
+        </section>
+        <section class="section__main">
+            
+        </section>
+        <section class="section__main">
+            
+        </section>
+        <section class="section__main">
+            
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html><script src="4ad0979c663ae1096c31c630282fb70e"></script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="b4faa3a74d850d3cf2b69e0946cf639a">
+</head>
+<body>
+    <div class="main">
+        <div class="login">
+            <div class="login__left">
+                <div class="login__left__heading">
+                    <h1>Login</h1>
+                    <p>Get access to your Orders, Wishlist and Recommendations</p>
+                </div>
+            </div>
+            <div class="login__right">
+                <form action="" class="login__form">
+                    <div class="input-field">
+                        <input type="text" name="" required="">
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="" required="">
+                        <label>Password</label>
+                    </div>
+                    <input type="submit" name="" value="Login" class="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="b0bfb01fea253b01bac5722f7a313b4b"></script>
+</body>
+</html>

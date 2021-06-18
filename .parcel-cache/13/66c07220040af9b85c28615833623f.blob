@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="b4faa3a74d850d3cf2b69e0946cf639a">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="5bec74eb09dafbed4bd66c8a9efd4862" alt="logo"></a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="3f2fc656eee4d50e8757840cb69d86cc">SignIn</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="da9555738c0a1c82ea0e49a1ff16d4a7" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="login">
+            <div class="login__left">
+                <div class="login__left__heading">
+                    <h1>Login</h1>
+                    <p>Get access to your Orders, Wishlist and Recommendations</p>
+                </div>
+            </div>
+            <div class="login__right">
+                <form action="" class="login__form">
+                    <div class="input-field">
+                        <input type="text" name="" required="">
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="" required="">
+                        <label>Password</label>
+                    </div>
+                    <input type="submit" name="" value="Login" class="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="b0bfb01fea253b01bac5722f7a313b4b"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    if (productContainer) {
+        // Function for Call the All Categories
+        async function showCategories() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        const getAllCategories = `\n                        <li><a href="#" class="filter">${category.name}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showCategories();
+        // Function for Call the All Products
+        async function showProducts() {
+            const allProductsContainer = document.querySelector('.all-products__container__product');
+            try {
+                await fetch('http://localhost:5000/products').then((response)=>response.json()
+                ).then((data)=>data.map((product)=>{
+                        const getAllProducts = `\n                        <div class="single-product">\n                            <h5>Fresho Kiwi - Green, 3 Pcs</h5>\n                            <img src="../../static/images/products/fruit-n-veg/apple.jpg" alt="">\n                            <p class="descriptions">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">185</span></p>\n                                <a href="#" class="btn-primary">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
+                        allProductsContainer.insertAdjacentHTML('beforebegin', getAllProducts);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        showProducts();
+    }
+}
+exports.default = products;

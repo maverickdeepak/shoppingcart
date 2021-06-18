@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="6495c517b85342c9abd994eda6b705bd">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="4f7b1b5d68bdc6b987b976644f4e5cd1" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="95e5284da921f2fc40829392dff7520f">SignIn</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="9ef4049ffc6d2f99d3dbebd7c9751464" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-------------------- Side Cart Slider Starts here ---------------->
+    <div class="side-cart">
+        <div class="side-cart__topbar">
+            <div class="side-cart__topbar__heading">
+                <h4>My Cart</h4>
+            </div>
+            <div class="side-cart__topbar__close">
+                <span>X</span>
+            </div>
+        </div>
+        <div class="side-cart__products__container">
+            <div class="emptyCart">
+                <h4>No items in your cart</h4>
+                <p>Your Favourite items are just a click away</p>
+            </div>
+        </div>
+        <div class="side-cart__products__cart">
+            
+        </div>
+        
+    </div>
+<!-------------------- Side Cart Slider End here ---------------->
+    <div class="main">
+        <div class="all-products">
+            <div class="all-products__container">
+                <div class="all-products__container__sidebar">
+                    <ul class="all-products__categories">
+                        <li><a href="#" class="filter" data-id="all">All</a></li>
+                    </ul>
+                </div>
+                <div class="all-products__container__product">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="body_opac"></span>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="8461de6cac26acdd8d7caabf261e5caf"></script>
+</body>
+</html>

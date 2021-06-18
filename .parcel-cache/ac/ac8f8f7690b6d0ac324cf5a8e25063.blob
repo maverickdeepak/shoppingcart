@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="b4faa3a74d850d3cf2b69e0946cf639a">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="5bec74eb09dafbed4bd66c8a9efd4862" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="f00c7e5f61a990b5426837f19e50f14e">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="3f2fc656eee4d50e8757840cb69d86cc">SignIn</a></li>
+                    <li><a href="26ac85a17281b4f78e8c482b9931fc85">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="da9555738c0a1c82ea0e49a1ff16d4a7" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-------------------- Side Cart Slider Starts here ---------------->
+        <div class="side-cart">
+            <div class="side-cart__topbar">
+                <div class="side-cart__topbar__heading">
+                    <h4>My Cart</h4>
+                </div>
+                <div class="side-cart__topbar__close">
+                    <span>X</span>
+                </div>
+            </div>
+            <div class="side-cart__products__container">
+                <div class="emptyCart">
+                    <h4>No items in your cart</h4>
+                    <p>Your Favourite items are just a click away</p>
+                </div>
+            </div>
+            <div class="side-cart__products__cart">
+                
+            </div>
+            
+        </div>
+    <!-------------------- Side Cart Slider End here ---------------->
+    <div class="main">
+        <div class="login">
+            <div class="login__left">
+                <div class="login__left__heading">
+                    <h1>Login</h1>
+                    <p>Get access to your Orders, Wishlist and Recommendations</p>
+                </div>
+            </div>
+            <div class="login__right">
+                <form action="" class="login__form">
+                    <div class="input-field">
+                        <input type="text" name="" required="">
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="" required="">
+                        <label>Password</label>
+                    </div>
+                    <input type="submit" name="" value="Login" class="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+    <span class="body_opac"></span>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="b0bfb01fea253b01bac5722f7a313b4b"></script>
+</body>
+</html>

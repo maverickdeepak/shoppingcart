@@ -1,0 +1,14 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function sideCart() {
+    const cartIcon = document.querySelector('.cart');
+    cartIcon.addEventListener('click', function() {
+        sideCart.classList.add('cart-active');
+        body.classList.add('overflow-hidden');
+    });
+    cartCloseButton.addEventListener('click', function() {
+        sideCart.classList.remove('cart-active');
+        body.classList.remove('overflow-hidden');
+    });
+}
+exports.default = sideCart;

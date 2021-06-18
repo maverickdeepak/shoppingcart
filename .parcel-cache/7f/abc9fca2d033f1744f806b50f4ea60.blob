@@ -1,0 +1,125 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    if (productContainer) {
+        // Function for Call the All Products
+        async function showProducts() {
+            const allProductsContainer = document.querySelector('.all-products__container__product');
+            try {
+                await fetch('http://localhost:5000/products').then((response)=>response.json()
+                ).then((data)=>data.map((product)=>{
+                        // console.log(product);
+                        const getAllProducts = `\n                        <div class="single-product" data-id="${product.category}">\n                            <h5>${product.name.substring(0, 20)}</h5>\n                            <img src="../..${product.imageURL}" alt="${product.name}">\n                            <p class="descriptions">${product.description.substring(0, 100)}</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">${product.price}</span></p>\n                                <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
+                        allProductsContainer.insertAdjacentHTML('beforeend', getAllProducts);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+            let buyButton = document.querySelectorAll('.buyButton');
+            // Add to Cart
+            for(let cartBtn = 0; cartBtn < buyButton.length; cartBtn++)buyButton[cartBtn].addEventListener('click', function() {
+                cartNumbers(products[cartBtn]);
+                totalCost(products[cartBtn]);
+            });
+            function onLoadCartNumbers() {
+                let productNumbers = localStorage.getItem('cartNumbers');
+                if (productNumbers) document.querySelector('.total_items_InCart').textContent = productNumbers;
+            }
+            function cartNumbers(product) {
+                let productNumbers = localStorage.getItem('cartNumbers');
+                productNumbers = parseInt(productNumbers);
+                if (productNumbers) {
+                    localStorage.setItem('cartNumbers', productNumbers + 1);
+                    document.querySelector('.total_items_InCart').textContent = productNumbers + 1;
+                } else {
+                    localStorage.setItem('cartNumbers', 1);
+                    document.querySelector('.total_items_InCart').textContent = 1;
+                }
+                setItems(product);
+                displayCart();
+            }
+            function setItems(product) {
+                let cartItems = localStorage.getItem('productsInCart');
+                cartItems = JSON.parse(cartItems);
+                if (cartItems != null) {
+                    if (cartItems[product.id] == undefined) {
+                        product.inCart = 0;
+                        cartItems = {
+                            ...cartItems,
+                            [product.id]: product
+                        };
+                    }
+                    cartItems[product.id].inCart += 1;
+                } else {
+                    product.inCart = 1;
+                    cartItems = {
+                        [product.id]: product
+                    };
+                }
+                localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            }
+            function totalCost(product) {
+                // console.log(product.price);
+                let cartCost = localStorage.getItem('totalCost');
+                if (cartCost != null) {
+                    cartCost = parseInt(cartCost);
+                    localStorage.setItem('totalCost', cartCost + product.price);
+                } else localStorage.setItem('totalCost', product.price);
+            }
+            function displayCart() {
+                let cartItems = localStorage.getItem('productsInCart');
+                cartItems = JSON.parse(cartItems);
+                let productContainer1 = document.querySelector('.side-cart__products__container');
+                let cartCost = localStorage.getItem('totalCost');
+                if (cartItems && productContainer1) {
+                    productContainer1.innerHTML = '';
+                    Object.values(cartItems).map((item)=>{
+                        productContainer1.innerHTML += `\n                        <div class="side-cart__products">\n                        <div class="side-cart__products__product">\n                            <img src="${item.image}" alt="">\n                            <div class="side-cart__products__product__info">\n                                <h5>${item.title.substring(0, 30)}</h5>\n                                <button class="minus-item decrease">-</button>\n                                \n                                <span class="itemInCart">${item.inCart}</span>\n                                \n                                <button class="minus-item increase">+</button>\n                                <span class="multiplay">X</span>\n                                <span class="side-cart__products__product__info__price">Rs.<span>${item.price}</span></span>\n                            </div>\n                            <div class="side-cart__products__product__totalPrice">Rs.<span class="totalPriceItem">${item.inCart * item.price}</span></div>\n                        </div>\n                    </div>\n                        `;
+                    });
+                }
+            }
+            displayCart();
+            onLoadCartNumbers();
+        }
+        showProducts();
+        // Function for Call the All Categories
+        async function showCategories() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        // console.log(category);
+                        const getAllCategories = `\n                        <li><a href="#" class="filter" data-id="${category.id}">${category.name}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+            // Function for Filter the Products
+            let categoryClasses = document.querySelectorAll('.filter');
+            let singleProduct = document.querySelectorAll('.single-product');
+            function filter() {
+                for(let i = 0; i < categoryClasses.length; i++)categoryClasses[i].addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    const filter1 = e.target.dataset.id;
+                    //console.log(filter);
+                    singleProduct.forEach((product)=>{
+                        // console.log(typeof product)
+                        // for (const singleItem in product) {
+                        //     console.log(`${product[singleItem]}`);
+                        // }
+                        if (filter1 === 'all') product.style.display = 'block';
+                        else if (product.getAttribute('data-id') == filter1) product.style.display = 'block';
+                        else product.style.display = 'none';
+                    });
+                });
+            }
+            filter();
+        }
+        showCategories();
+    }
+}
+exports.default = products;

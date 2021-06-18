@@ -1,0 +1,4 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _slider = require("./slider");
+var _sliderDefault = parcelHelpers.interopDefault(_slider);
+_sliderDefault.default();

@@ -1,0 +1,18 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    if (productContainer) {
+        const fs = require('fs');
+        const json_data = require('../../server/products/index.get.json');
+        fs.readFile(json_data, 'utf8', function(err, data) {
+            try {
+                data = JSON.parse(data);
+                console.log(data);
+            } catch (e) {
+            // Catch error in case file doesn't exist or isn't valid JSON
+            }
+        });
+    }
+}
+exports.default = products;
