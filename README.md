@@ -4,10 +4,8 @@ Clone this repo and run following command for starting the project.
 
 ```
 npm install
-npm run start
 # or
 yarn install
-yarn start
 ```
 
 After this Please run following commands
