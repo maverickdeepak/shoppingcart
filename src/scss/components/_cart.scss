@@ -58,6 +58,9 @@
     &__product {
       display: flex;
       align-items: center;
+      @media only screen and (max-width: $bp-small) {
+        justify-content: space-around;
+      }
       &__info {
         padding: 0 2rem;
       }
@@ -78,6 +81,9 @@
         height: 2rem;
         width: 2rem;
         cursor: pointer;
+        &:hover {
+          background-color: $color-primary2;
+        }
       }
       .multiplay {
         font-size: 1.4rem;
@@ -103,6 +109,11 @@
     background-color: $color-white;
     width: 100%;
     padding: 1rem;
+
+    @media only screen and (max-width: $bp-med) {
+      bottom: calc(92vh - 88.6vh);
+    }
+
     p {
       font-size: 1.4rem;
       text-align: center;
@@ -144,6 +155,7 @@
 .cart-active {
   transform: translateX(0);
   margin-right: 9.8rem;
+
   @media only screen and (max-width: $bp-med) {
     margin-right: 0;
   }

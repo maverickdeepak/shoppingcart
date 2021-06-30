@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabka Bazar</title>
+    <link rel="icon" type="image/png" href="4f84c98f257a0f5564d9084faf65cabb">
+    <link rel="stylesheet" href="c5a487740cbe25559d2a5d6f92b16334">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="efdbf075b29cb328d56f5507ea43b06f" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="16ee5736baebdeaab2c0fbcc0e6289f0">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="732ed24ca792de0a5753b7f2de5edd34">SignIn</a></li>
+                    <li><a href="de3ad78fa756ed2700726d089e1100ea">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="7f6f6de3b8ae6b96d0aa77e0f534456e" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-------------------- Side Cart Slider Starts here ---------------->
+        <div class="side-cart">
+            <div class="side-cart__topbar">
+                <div class="side-cart__topbar__heading">
+                    <h4>My Cart</h4>
+                </div>
+                <div class="side-cart__topbar__close">
+                    <span>X</span>
+                </div>
+            </div>
+            <div class="side-cart__products__container">
+                
+            </div>
+            <div class="side-cart__products__cart">
+    
+            </div>
+        </div>
+    <!-------------------- Side Cart Slider End here ---------------->
+    <main class="main">
+        <section class="section__slider">
+            <div class="wrapper">
+                <!-- Images Area -->
+                <div class="images-area">
+                  <img src="5a684e54fcbcfa2144569a3adf1d0cf0" alt="image" class="firstImage">
+                  <img src="13409c277f48552c503c7bb40dacc862" alt="image">
+                  <img src="e389f1c1b8bf31bbd0f643e1e99d134e" alt="image">
+                  <img src="948e9f38c7cd43835d2ee66da875d545" alt="image">
+                  <div class="buttons-area">
+                    <div class="previous-btn">
+                      PREV
+                    </div>
+                    <div class="next-btn">
+                      NEXT
+                    </div>
+                  </div>
+                </div>
+                <!-- Buttons Area -->
+                
+                <!-- Pagination Area -->
+                <div class="pagination-area">
+                </div>
+              </div>
+        </section>
+        <section class="section__main">
+            <div class="col-left">
+                <img src="5fcfb5dc0d4bee79430f87083a03b6f6" alt="Fruits">
+            </div>
+            <div class="col-right">
+                <h4>Fruits and Vegetables</h4>
+                <p>A variety of fresh fruits and vegetables</p>
+                <a href="16ee5736baebdeaab2c0fbcc0e6289f0" class="btn-primary">Explore fruit-and-veg</a>
+            </div>
+        </section>
+        <section class="section__main column-reverse">
+            <div class="col-right">
+                <h4>Bakery Cakes and Dairy</h4>
+                <p>The best cupcake, cookies, cakes, fresh bread, muffins, bagels, fresh milk etc.</p>
+                <a href="16ee5736baebdeaab2c0fbcc0e6289f0" class="btn-primary">Explore bakery-cakes-dairy</a>
+            </div>
+            <div class="col-left">
+                <img src="5f5550867bb836e01e51bb316d00c7ac" alt="bakeryn cakes dairy">
+            </div>
+        </section>
+        <section class="section__main">
+            <div class="col-left">
+                <img src="89ca29abb4069d53e60d2f9be5549b14" alt="beverages">
+            </div>
+            <div class="col-right">
+                <h4>Beverages</h4>
+                <p>Our bevegrages department will ensure your fridge is always fully stocked.</p>
+                <a href="16ee5736baebdeaab2c0fbcc0e6289f0" class="btn-primary">Explore fruit-and-veg</a>
+            </div>
+        </section>
+        <section class="section__main column-reverse">
+            <div class="col-right">
+                <h4>Beauty and Hygiene</h4>
+                <p>Buy beauty and personal care products online in India at best price.</p>
+                <a href="16ee5736baebdeaab2c0fbcc0e6289f0" class="btn-primary">Explore bakery-cakes-dairy</a>
+            </div>
+            <div class="col-left">
+                <img src="35b003619bcf9b799005432393292b3a" alt="bakeryn cakes dairy">
+            </div>
+        </section>
+        <section class="section__main">
+            <div class="col-left">
+                <img src="dfb62db097ed3535d7148d198f6db84e" alt="beverages">
+            </div>
+            <div class="col-right">
+                <h4>Baby Care</h4>
+                <p>Shop online for baby products, Diaper, Skin care products etc</p>
+                <a href="16ee5736baebdeaab2c0fbcc0e6289f0" class="btn-primary">Explore fruit-and-veg</a>
+            </div>
+        </section>
+    </main>
+    <span class="body_opac"></span>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="fb1b3c41673cd907e524ae29e66e56e2"></script>
+</body>
+</html>

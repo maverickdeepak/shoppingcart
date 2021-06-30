@@ -1,0 +1,7 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function homePage() {
+    const homepage = document.querySelector('.homepage');
+    if (homepage) alert('HomePage');
+}
+exports.default = homePage;

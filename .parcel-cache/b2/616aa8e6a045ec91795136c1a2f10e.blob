@@ -1,0 +1,22 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function formValidation() {
+    const ifForm = document.querySelector('.login');
+    const form = document.querySelector('.login__form');
+    const email = document.querySelector('.email');
+    const password = document.querySelector('.password');
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (username.value == '') showError(username, 'Username is required');
+        else showSuccess(username);
+        if (email.value == '') showError(email, 'Email is required');
+        else if (!isValidEmail(email.value)) showError(email, 'Email is not valid');
+        else showSuccess(email);
+        if (password.value == '') showError(password, 'Password is required');
+        else showSuccess(password);
+        if (password2.value == '') showError(password2, 'Confirm password is required');
+        else showSuccess(password2);
+    });
+}
+exports.default = formValidation;

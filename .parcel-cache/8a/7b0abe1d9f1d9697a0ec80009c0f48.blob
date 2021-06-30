@@ -1,0 +1,20 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function homePage() {
+    const homepage = document.querySelector('.homepage');
+    if (homepage) {
+        async function homePageSections() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json
+                ).then((data)=>obj = data
+                ).then((obj)=>obj.map((productCategories)=>{
+                        console.log(productCategories);
+                    })
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+}
+exports.default = homePage;

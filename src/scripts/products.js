@@ -2,6 +2,7 @@ import addToCart from './addToCart.js'
 export default function products() {
     let productContainer = document.querySelector('.all-products');
     let categoryContainer = document.querySelector('.all-products__categories');
+    let categoryContainerMobile = document.querySelector('.mobile-select');
     if (productContainer) {
 
         // Function for Call the All Products
@@ -18,7 +19,7 @@ export default function products() {
                         const getAllProducts = `
                         <div class="single-product" data-id="${product.category}">
                             <h5>${product.name.substring(0, 20)}</h5>
-                            <img src="../..${product.imageURL}" alt="${product.name}">
+                            <img src="${product.imageURL}" alt="${product.name}">
                             <p class="descriptions">${product.description.substring(0, 100)}</p>
                             <div class="productBottom">
                                 <p>Rs <span class="price">${product.price}</span></p>
@@ -32,7 +33,7 @@ export default function products() {
             } catch (err) {
                 console.log(err)
             }
-            /* -- Imported function calling here --*/
+            /* -- Imported function call here --*/
             addToCart();
 
         } showProducts();
@@ -84,6 +85,53 @@ export default function products() {
             filter();
         }
         showCategories();
+
+        // Show categories for mobile device
+        if (window.innerWidth <= 540) {
+            async function showCategoriesMobile() {
+                try {
+                    await fetch('http://localhost:5000/categories')
+                        .then(response => response.json())
+                        .then(data => data.map((category) => {
+                            // console.log(category);
+                            const getAllCategories = `
+                            <option value="${category.id}" data-id="${category.id}" class="filter">${category.name}</option>
+                            `;
+                            categoryContainerMobile.insertAdjacentHTML('beforeend', getAllCategories);
+                        }));
+                }
+                catch (err) {
+                    console.log(err)
+                }
+
+                // Function for Filter the Products
+                let categoryClasses = document.getElementById('mobile-select');
+                let singleProduct = document.querySelectorAll('.single-product');
+                function filter() {
+                    categoryClasses.addEventListener('change', (e) => {
+                        let strUser = categoryClasses.value;
+                        singleProduct.forEach((product) => {
+                            // console.log(typeof product)
+                            // for (const singleItem in product) {
+                            //     console.log(`${product[singleItem]}`);
+                            // }
+                            if (strUser === 'all') {
+                                product.style.display = 'block'
+                            } else {
+                                if (product.getAttribute('data-id') == strUser) {
+                                    product.style.display = 'block';
+                                } else {
+                                    product.style.display = 'none';
+                                }
+                            }
+                        })
+                    })
+
+                }
+                filter();
+            }
+            showCategoriesMobile();
+        }
 
     } else {
         addToCart();

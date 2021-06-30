@@ -104,6 +104,23 @@
     box-shadow: 0 11px 8px -6px $color-light-grey;
     padding: 2.5rem 0;
     margin: 2rem 0;
+
+    &:nth-child(3) {
+      display: none;
+    }
+
+    &:nth-child(odd) {
+      .col-left {
+        order: 2;
+      }
+    }
+
+    &:nth-child(2) {
+      .col-left {
+        order: 2;
+      }
+    }
+
     @media only screen and (max-width: $bp-small) {
       grid-template-columns: repeat(1, 1fr);
     }
@@ -114,6 +131,8 @@
           width: 100%;
         }
       }
+      display: flex;
+      justify-content: center;
     }
     .col-right {
       display: flex;
@@ -126,9 +145,7 @@
       p {
         font-size: 1.6rem;
         color: $color-black;
-        @media only screen and (max-width: $bp-med) {
-          text-align: center;
-        }
+        text-align: center;
       }
       .btn-primary {
         margin-top: 2rem;

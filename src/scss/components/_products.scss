@@ -24,18 +24,35 @@
         display: none;
       }
     }
+    select#mobile-select {
+      width: 100%;
+      background: #bf2957;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    .mobile-filter {
+      @media only screen and (min-width: $bp-small) {
+        display: none;
+      }
+    }
     &__product {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: 1fr;
       grid-column-gap: 1rem;
       grid-row-gap: 4rem;
-      @media only screen and (max-width: $bp-small) {
-        grid-template-columns: 1fr;
-      }
       @media only screen and (max-width: $bp-med) {
         grid-template-columns: repeat(2, 1fr);
       }
+      @media only screen and (max-width: $bp-small) {
+        grid-template-columns: 1fr;
+      }
+
       .single-product {
         transition: 0.2s all;
         margin: 2rem 0;

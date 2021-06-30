@@ -1,0 +1,99 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function addToCart() {
+    const sideCart = document.querySelector('.side-cart');
+    if (sideCart) {
+        let buyButton = document.querySelectorAll('.buyButton');
+        let emptyCart = document.querySelector('.emptyCart');
+        let path = window.location.pathname;
+        let page = path.split("/").pop();
+        if (page == 'products.html') var products = obj;
+        // Add to Cart
+        for(let cartBtn = 0; cartBtn < buyButton.length; cartBtn++)buyButton[cartBtn].addEventListener('click', function() {
+            emptyCart.style.display = 'none';
+            cartNumbers(products[cartBtn]);
+            totalCost(products[cartBtn]);
+            displayCart();
+        });
+        function onLoadCartNumbers() {
+            let productNumbers = localStorage.getItem('cartNumbers');
+            if (productNumbers) document.querySelector('.total_items_InCart').textContent = productNumbers;
+        }
+        function cartNumbers(product, action) {
+            let productNumbers = localStorage.getItem('cartNumbers');
+            productNumbers = parseInt(productNumbers);
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            if (action) {
+                localStorage.setItem("cartNumbers", productNumbers - 1);
+                document.querySelector('.cart span').textContent = productNumbers - 1;
+                console.log("action running");
+            } else if (productNumbers) {
+                localStorage.setItem('cartNumbers', productNumbers + 1);
+                document.querySelector('.total_items_InCart').textContent = productNumbers + 1;
+            } else {
+                localStorage.setItem('cartNumbers', 1);
+                document.querySelector('.total_items_InCart').textContent = 1;
+            }
+            setItems(product);
+            displayCart();
+        }
+        function setItems(product) {
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            if (cartItems != null) {
+                if (cartItems[product.id] == undefined) {
+                    product.inCart = 0;
+                    cartItems = {
+                        ...cartItems,
+                        [product.id]: product
+                    };
+                }
+                cartItems[product.id].inCart += 1;
+            } else {
+                product.inCart = 1;
+                cartItems = {
+                    [product.id]: product
+                };
+            }
+            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+        }
+        function totalCost(product, action) {
+            let cartCost = localStorage.getItem('totalCost');
+            if (action) {
+                cart = parseInt(cart);
+                localStorage.setItem("totalCost", cart - product.price);
+            } else if (cartCost != null) {
+                cartCost = parseInt(cartCost);
+                localStorage.setItem('totalCost', cartCost + product.price);
+            } else localStorage.setItem('totalCost', product.price);
+        }
+        function displayCart() {
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            let productContainer = document.querySelector('.side-cart__products__container');
+            let cartCost = localStorage.getItem('totalCost');
+            if (cartItems && productContainer) {
+                productContainer.innerHTML = '';
+                Object.values(cartItems).map((item)=>{
+                    productContainer.innerHTML += `\n                        <div class="side-cart__products">\n                        <div class="side-cart__products__product">\n                            <img src="${item.imageURL}" alt="${item.name}">\n                            <div class="side-cart__products__product__info">\n                                <h5 class="product_name">${item.name}</h5>\n                                <div class="quantity">\n                                    <button class="minus-item decrease">-</button>\n                                    <span class="itemInCart">${item.inCart}</span>\n                                    <button class="minus-item increase">+</button>\n                                </div>\n                                \n                                <span class="multiplay">X</span>\n                                <span class="side-cart__products__product__info__price">Rs.<span>${item.price}</span></span>\n                            </div>\n                            <div class="side-cart__products__product__totalPrice">Rs.<span class="totalPriceItem">${item.inCart * item.price}</span></div>\n                        </div>\n                    </div>\n                        `;
+                });
+                productContainer.innerHTML += `\n                    <div class="side-cart__checkout">\n                        <p>Promo code can be applied on payment page</p>\n                        <button class="side-cart__checkout__button">Proceed to Checkout <span class="side-cart__checkout__totalPrice">Rs. <span>${cartCost}</span><i class="fas fa-chevron-right"></i>\n                        </button>\n                    </div>\n                    `;
+                manageQuantity();
+            }
+        }
+        function manageQuantity() {
+            let decreaseButtons = document.querySelectorAll('.decrease');
+            let increaseButtons = document.querySelectorAll('.increase');
+            let currentQuantity = 0;
+            let currentProduct = '';
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            let { inCart , price  } = cartItems;
+            console.log(inCart);
+        }
+        displayCart();
+        onLoadCartNumbers();
+    }
+}
+exports.default = addToCart;
