@@ -1,0 +1,103 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _addToCartJs = require("./addToCart.js");
+var _addToCartJsDefault = parcelHelpers.interopDefault(_addToCartJs);
+var _jpg = require("url:../../static/images/products/*/*.jpg");
+var _jpgDefault = parcelHelpers.interopDefault(_jpg);
+console.log(_jpgDefault.default);
+function products() {
+    let productContainer = document.querySelector('.all-products');
+    let categoryContainer = document.querySelector('.all-products__categories');
+    let categoryContainerMobile = document.querySelector('.mobile-select');
+    if (productContainer) {
+        // Function for Call the All Products
+        async function showProducts() {
+            const allProductsContainer = document.querySelector('.all-products__container__product');
+            try {
+                await fetch('http://localhost:5000/products').then((response)=>response.json()
+                ).then((data)=>obj = data
+                ).then((obj)=>obj.map((product)=>{
+                        // console.log(product);
+                        const getAllProducts = `\n                        <div class="single-product" data-id="${product.category}">\n                            <h5>${product.name.substring(0, 20)}</h5>\n                            <img src="${_jpgDefault.default}" alt="${product.name}">\n                            <p class="descriptions">${product.description.substring(0, 100)}</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">${product.price}</span></p>\n                                <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
+                        allProductsContainer.insertAdjacentHTML('beforeend', getAllProducts);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+            /* -- Imported function call here --*/ _addToCartJsDefault.default();
+        }
+        showProducts();
+        // Function for Call the All Categories
+        async function showCategories() {
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>data.map((category)=>{
+                        // console.log(category);
+                        const getAllCategories = `\n                        <li><a href="#" class="filter" data-id="${category.id}">${category.name}</a></li>\n                        `;
+                        categoryContainer.insertAdjacentHTML('beforeend', getAllCategories);
+                    })
+                );
+            } catch (err) {
+                console.log(err);
+            }
+            // Function for Filter the Products
+            let categoryClasses = document.querySelectorAll('.filter');
+            let singleProduct = document.querySelectorAll('.single-product');
+            function filter() {
+                for(let i = 0; i < categoryClasses.length; i++)categoryClasses[i].addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    const filter1 = e.target.dataset.id;
+                    //console.log(filter);
+                    singleProduct.forEach((product)=>{
+                        // console.log(typeof product)
+                        // for (const singleItem in product) {
+                        //     console.log(`${product[singleItem]}`);
+                        // }
+                        if (filter1 === 'all') product.style.display = 'block';
+                        else if (product.getAttribute('data-id') == filter1) product.style.display = 'block';
+                        else product.style.display = 'none';
+                    });
+                });
+            }
+            filter();
+        }
+        showCategories();
+        // Show categories for mobile device
+        if (window.innerWidth <= 540) {
+            async function showCategoriesMobile() {
+                try {
+                    await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                    ).then((data)=>data.map((category)=>{
+                            // console.log(category);
+                            const getAllCategories = `\n                            <option value="${category.id}" data-id="${category.id}" class="filter">${category.name}</option>\n                            `;
+                            categoryContainerMobile.insertAdjacentHTML('beforeend', getAllCategories);
+                        })
+                    );
+                } catch (err) {
+                    console.log(err);
+                }
+                // Function for Filter the Products
+                let categoryClasses = document.getElementById('mobile-select');
+                let singleProduct = document.querySelectorAll('.single-product');
+                function filter() {
+                    categoryClasses.addEventListener('change', (e)=>{
+                        let strUser = categoryClasses.value;
+                        singleProduct.forEach((product)=>{
+                            // console.log(typeof product)
+                            // for (const singleItem in product) {
+                            //     console.log(`${product[singleItem]}`);
+                            // }
+                            if (strUser === 'all') product.style.display = 'block';
+                            else if (product.getAttribute('data-id') == strUser) product.style.display = 'block';
+                            else product.style.display = 'none';
+                        });
+                    });
+                }
+                filter();
+            }
+            showCategoriesMobile();
+        }
+    } else _addToCartJsDefault.default();
+}
+exports.default = products;

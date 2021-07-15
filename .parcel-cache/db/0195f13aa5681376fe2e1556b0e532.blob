@@ -1,0 +1,7 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function formValidation() {
+    const form = document.querySelector('.login');
+    if (form) alert('This is form page');
+}
+exports.default = formValidation;

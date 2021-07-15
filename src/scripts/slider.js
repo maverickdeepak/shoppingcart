@@ -1,4 +1,5 @@
 export default function slider() {
+
     let SliderContainer = document.querySelector('.section__slider');
     // Images Area Images
     let imagesAreaImages = document.querySelectorAll('.images-area img');
@@ -82,8 +83,55 @@ export default function slider() {
 
             // Move The images Area First Image
             imagesAreaFirstImage.style.marginLeft = `-${1170 * currentImageMinusOne}px`;
-            console.log(1170 * currentImageMinusOne);
+            // console.log(1170 * currentImageMinusOne);
+
         })();
+
+        if (window.innerWidth <= 540) {
+            (sliderController = function () {
+                // Get All The pagination Spans
+                let paginationCircls = document.querySelectorAll('.pagination-area span');
+
+                // Call Remore All Active Class Function
+                removeAllActive(paginationCircls);
+
+                // Call Remore Active Button Function
+                activeButton();
+
+                // The currentImageCount Minus One
+                let currentImageMinusOne = currentImageCount - 1;
+
+                // Set Active Class On Current Pagination
+                paginationCircls[currentImageMinusOne].classList.add('active');
+
+                // Move The images Area First Image
+                imagesAreaFirstImage.style.marginLeft = `-${415 * currentImageMinusOne}px`;
+                // console.log(415 * currentImageMinusOne);
+            })();
+        }
+
+        if (window.innerWidth <= 769) {
+            (sliderController = function () {
+                // Get All The pagination Spans
+                let paginationCircls = document.querySelectorAll('.pagination-area span');
+
+                // Call Remore All Active Class Function
+                removeAllActive(paginationCircls);
+
+                // Call Remore Active Button Function
+                activeButton();
+
+                // The currentImageCount Minus One
+                let currentImageMinusOne = currentImageCount - 1;
+
+                // Set Active Class On Current Pagination
+                paginationCircls[currentImageMinusOne].classList.add('active');
+
+                // Move The images Area First Image
+                imagesAreaFirstImage.style.marginLeft = `-${769 * currentImageMinusOne}px`;
+                // console.log(769 * currentImageMinusOne);
+            })();
+        }
 
         // Remove All Active Class Function
         function removeAllActive(targetElement) {

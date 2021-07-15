@@ -1,0 +1,29 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function sliderImages() {
+    const slider = document.querySelector('.section__slider');
+    if (slider) {
+        const imagesArea = document.querySelector('.images-area');
+        try {
+            fetch('http://localhost:5000/banners').then((response)=>response.json()
+            ).then((data)=>obj = data
+            ).then((obj)=>obj.map((bannerImage)=>{
+                    const allImages = `\n                    <img src="${bannerImage.bannerImageUrl}" alt="${bannerImage.bannerImageAlt}">\n                    `;
+                    imagesArea.insertAdjacentHTML('afterbegin', allImages);
+                })
+            );
+            function myFunction() {
+                setInterval(function() {
+                    const firstChild = imagesArea.firstElementChild;
+                    firstChild.classList.add('firstImage');
+                }, 1);
+            }
+            myFunction();
+            const pagination = `\n            <div class="buttons-area">\n                    <div class="previous-btn">\n                      PREV\n                    </div>\n                    <div class="next-btn">\n                      NEXT\n                    </div>\n            </div>\n            `;
+            imagesArea.insertAdjacentHTML('beforeEnd', pagination);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+exports.default = sliderImages;

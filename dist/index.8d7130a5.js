@@ -384,15 +384,21 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _sliderJs = require("./slider.js");
 var _sliderJsDefault = parcelHelpers.interopDefault(_sliderJs);
+var _homePageJs = require("./homePage.js");
+var _homePageJsDefault = parcelHelpers.interopDefault(_homePageJs);
 var _productsJs = require("./products.js");
 var _productsJsDefault = parcelHelpers.interopDefault(_productsJs);
 var _sideCartJs = require("./sideCart.js");
 var _sideCartJsDefault = parcelHelpers.interopDefault(_sideCartJs);
+var _formValidation = require("./formValidation");
+var _formValidationDefault = parcelHelpers.interopDefault(_formValidation);
 _sliderJsDefault.default();
+_homePageJsDefault.default();
 _productsJsDefault.default();
 _sideCartJsDefault.default();
+_formValidationDefault.default();
 
-},{"./slider.js":"5sD79","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./products.js":"4Iw5E","./sideCart.js":"5yyET"}],"5sD79":[function(require,module,exports) {
+},{"./slider.js":"5sD79","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./products.js":"4Iw5E","./sideCart.js":"5yyET","./formValidation":"4jS5F","./homePage.js":"6mLAx"}],"5sD79":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 function slider() {
@@ -463,6 +469,36 @@ function slider() {
             // Move The images Area First Image
             imagesAreaFirstImage.style.marginLeft = `-${1170 * currentImageMinusOne}px`;
             console.log(1170 * currentImageMinusOne);
+        })();
+        if (window.innerWidth <= 540) (sliderController = function() {
+            // Get All The pagination Spans
+            let paginationCircls = document.querySelectorAll('.pagination-area span');
+            // Call Remore All Active Class Function
+            removeAllActive(paginationCircls);
+            // Call Remore Active Button Function
+            activeButton();
+            // The currentImageCount Minus One
+            let currentImageMinusOne = currentImageCount - 1;
+            // Set Active Class On Current Pagination
+            paginationCircls[currentImageMinusOne].classList.add('active');
+            // Move The images Area First Image
+            imagesAreaFirstImage.style.marginLeft = `-${415 * currentImageMinusOne}px`;
+            console.log(415 * currentImageMinusOne);
+        })();
+        if (window.innerWidth <= 769) (sliderController = function() {
+            // Get All The pagination Spans
+            let paginationCircls = document.querySelectorAll('.pagination-area span');
+            // Call Remore All Active Class Function
+            removeAllActive(paginationCircls);
+            // Call Remore Active Button Function
+            activeButton();
+            // The currentImageCount Minus One
+            let currentImageMinusOne = currentImageCount - 1;
+            // Set Active Class On Current Pagination
+            paginationCircls[currentImageMinusOne].classList.add('active');
+            // Move The images Area First Image
+            imagesAreaFirstImage.style.marginLeft = `-${769 * currentImageMinusOne}px`;
+            console.log(769 * currentImageMinusOne);
         })();
         // Remove All Active Class Function
         function removeAllActive(targetElement) {
@@ -538,6 +574,7 @@ var _addToCartJsDefault = parcelHelpers.interopDefault(_addToCartJs);
 function products() {
     let productContainer = document.querySelector('.all-products');
     let categoryContainer = document.querySelector('.all-products__categories');
+    let categoryContainerMobile = document.querySelector('.mobile-select');
     if (productContainer) {
         // Function for Call the All Products
         async function showProducts() {
@@ -547,14 +584,14 @@ function products() {
                 ).then((data)=>obj = data
                 ).then((obj)=>obj.map((product)=>{
                         // console.log(product);
-                        const getAllProducts = `\n                        <div class="single-product" data-id="${product.category}">\n                            <h5>${product.name.substring(0, 20)}</h5>\n                            <img src="../..${product.imageURL}" alt="${product.name}">\n                            <p class="descriptions">${product.description.substring(0, 100)}</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">${product.price}</span></p>\n                                <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
+                        const getAllProducts = `\n                        <div class="single-product" data-id="${product.category}">\n                            <h5>${product.name.substring(0, 20)}</h5>\n                            <img src="${product.imageURL}" alt="${product.name}">\n                            <p class="descriptions">${product.description.substring(0, 100)}</p>\n                            <div class="productBottom">\n                                <p>Rs <span class="price">${product.price}</span></p>\n                                <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>\n                            </div>\n                        </div>\n                      `;
                         allProductsContainer.insertAdjacentHTML('beforeend', getAllProducts);
                     })
                 );
             } catch (err) {
                 console.log(err);
             }
-            /* -- Imported function calling here --*/ _addToCartJsDefault.default();
+            /* -- Imported function call here --*/ _addToCartJsDefault.default();
         }
         showProducts();
         // Function for Call the All Categories
@@ -592,6 +629,41 @@ function products() {
             filter();
         }
         showCategories();
+        // Show categories for mobile device
+        if (window.innerWidth <= 540) {
+            async function showCategoriesMobile() {
+                try {
+                    await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                    ).then((data)=>data.map((category)=>{
+                            // console.log(category);
+                            const getAllCategories = `\n                            <option value="${category.id}" data-id="${category.id}" class="filter">${category.name}</option>\n                            `;
+                            categoryContainerMobile.insertAdjacentHTML('beforeend', getAllCategories);
+                        })
+                    );
+                } catch (err) {
+                    console.log(err);
+                }
+                // Function for Filter the Products
+                let categoryClasses = document.getElementById('mobile-select');
+                let singleProduct = document.querySelectorAll('.single-product');
+                function filter() {
+                    categoryClasses.addEventListener('change', (e)=>{
+                        let strUser = categoryClasses.value;
+                        singleProduct.forEach((product)=>{
+                            // console.log(typeof product)
+                            // for (const singleItem in product) {
+                            //     console.log(`${product[singleItem]}`);
+                            // }
+                            if (strUser === 'all') product.style.display = 'block';
+                            else if (product.getAttribute('data-id') == strUser) product.style.display = 'block';
+                            else product.style.display = 'none';
+                        });
+                    });
+                }
+                filter();
+            }
+            showCategoriesMobile();
+        }
     } else _addToCartJsDefault.default();
 }
 exports.default = products;
@@ -611,16 +683,23 @@ function addToCart() {
         for(let cartBtn = 0; cartBtn < buyButton.length; cartBtn++)buyButton[cartBtn].addEventListener('click', function() {
             emptyCart.style.display = 'none';
             cartNumbers(products[cartBtn]);
-            console.log(totalCost(products[cartBtn]));
+            totalCost(products[cartBtn]);
+            displayCart();
         });
         function onLoadCartNumbers() {
             let productNumbers = localStorage.getItem('cartNumbers');
             if (productNumbers) document.querySelector('.total_items_InCart').textContent = productNumbers;
         }
-        function cartNumbers(product) {
+        function cartNumbers(product, action) {
             let productNumbers = localStorage.getItem('cartNumbers');
             productNumbers = parseInt(productNumbers);
-            if (productNumbers) {
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            if (action) {
+                localStorage.setItem("cartNumbers", productNumbers - 1);
+                document.querySelector('.total_items_InCart').textContent = productNumbers - 1;
+                console.log("action running");
+            } else if (productNumbers) {
                 localStorage.setItem('cartNumbers', productNumbers + 1);
                 document.querySelector('.total_items_InCart').textContent = productNumbers + 1;
             } else {
@@ -650,10 +729,12 @@ function addToCart() {
             }
             localStorage.setItem('productsInCart', JSON.stringify(cartItems));
         }
-        function totalCost(product) {
-            console.log(product.price);
+        function totalCost(product, action) {
             let cartCost = localStorage.getItem('totalCost');
-            if (cartCost != null) {
+            if (action) {
+                cartCost = parseInt(cartCost);
+                localStorage.setItem("totalCost", cartCost - product.price);
+            } else if (cartCost != null) {
                 cartCost = parseInt(cartCost);
                 localStorage.setItem('totalCost', cartCost + product.price);
             } else localStorage.setItem('totalCost', product.price);
@@ -666,9 +747,46 @@ function addToCart() {
             if (cartItems && productContainer) {
                 productContainer.innerHTML = '';
                 Object.values(cartItems).map((item)=>{
-                    productContainer.innerHTML += `\n                        <div class="side-cart__products">\n                        <div class="side-cart__products__product">\n                            <img src="${item.imageURL}" alt="${item.name}">\n                            <div class="side-cart__products__product__info">\n                                <h5>${item.name}</h5>\n                                <button class="minus-item decrease">-</button>\n                                \n                                <span class="itemInCart">${item.inCart}</span>\n                                \n                                <button class="minus-item increase">+</button>\n                                <span class="multiplay">X</span>\n                                <span class="side-cart__products__product__info__price">Rs.<span>${item.price}</span></span>\n                            </div>\n                            <div class="side-cart__products__product__totalPrice">Rs.<span class="totalPriceItem">${item.inCart * item.price}</span></div>\n                        </div>\n                    </div>\n                        `;
+                    productContainer.innerHTML += `\n                        <div class="side-cart__products">\n                        <div class="side-cart__products__product">\n                            <img src="${item.imageURL}" alt="${item.name}">\n                            <div class="side-cart__products__product__info">\n                                <h5 class="product_name" data-uqid="${item.id}">${item.name.substring(0, 20)}</h5>\n                                <div class="quantity">\n                                    <button class="minus-item decrease">-</button>\n                                    <span class="itemInCart">${item.inCart}</span>\n                                    <button class="minus-item increase">+</button>\n                                    <span class="multiplay">X</span>\n                                     <span class="side-cart__products__product__info__price">Rs.<span>${item.price}</span></span>\n                                </div>\n                            </div>\n                            <div class="side-cart__products__product__totalPrice">Rs.<span class="totalPriceItem">${item.inCart * item.price}</span></div>\n                        </div>\n                    </div>\n                        `;
                 });
                 productContainer.innerHTML += `\n                    <div class="side-cart__checkout">\n                        <p>Promo code can be applied on payment page</p>\n                        <button class="side-cart__checkout__button">Proceed to Checkout <span class="side-cart__checkout__totalPrice">Rs. <span>${cartCost}</span><i class="fas fa-chevron-right"></i>\n                        </button>\n                    </div>\n                    `;
+                manageQuantity();
+            }
+        }
+        function manageQuantity() {
+            let decreaseButtons = document.querySelectorAll('.decrease');
+            let increaseButtons = document.querySelectorAll('.increase');
+            let currentQuantity = 0;
+            let currentProduct = '';
+            let cartItems = localStorage.getItem('productsInCart');
+            cartItems = JSON.parse(cartItems);
+            for(let i = 0; i < increaseButtons.length; i++){
+                decreaseButtons[i].addEventListener('click', ()=>{
+                    console.log(cartItems);
+                    currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+                    console.log(currentQuantity);
+                    currentProduct = increaseButtons[i].parentElement.parentElement.firstChild.nextSibling.dataset.uqid;
+                    console.log(typeof currentProduct);
+                    if (cartItems[currentProduct].inCart > 1) {
+                        cartItems[currentProduct].inCart -= 1;
+                        cartNumbers(cartItems[currentProduct], "decrease");
+                        totalCost(cartItems[currentProduct], "decrease");
+                        localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+                        displayCart();
+                    }
+                });
+                increaseButtons[i].addEventListener('click', ()=>{
+                    console.log(cartItems);
+                    currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+                    console.log(currentQuantity);
+                    currentProduct = increaseButtons[i].parentElement.parentElement.firstChild.nextSibling.dataset.uqid;
+                    console.log(currentProduct);
+                    cartItems[currentProduct].inCart += 1;
+                    cartNumbers(cartItems[currentProduct]);
+                    totalCost(cartItems[currentProduct]);
+                    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+                    displayCart();
+                });
             }
         }
         displayCart();
@@ -697,6 +815,91 @@ function sideCart() {
     } else console.log('Cart Not Found');
 }
 exports.default = sideCart;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"4jS5F":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function formValidation() {
+    const ifFormRegister = document.querySelector('.register_form');
+    const form = document.querySelector('.loginForm');
+    const firstName = document.querySelector('.firstName');
+    const lastName = document.querySelector('.lastName');
+    const email = document.querySelector('.email');
+    const password = document.querySelector('.password');
+    const password2 = document.querySelector('.password2');
+    const btn = document.querySelector('.btn');
+    // Show input error message
+    function showError(input, message) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-field error';
+        const small = formControl.querySelector('small');
+        small.innerText = message;
+    }
+    // Show success outline
+    function showSuccess(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-field success';
+    }
+    // Check email is valid
+    function isValidEmail(email1) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email1).toLowerCase());
+    }
+    // Check passwords match
+    function checkPasswordsMatch(input1, input2) {
+        if (input1.value !== input2.value) showError(input2, 'Passwords do not match');
+    }
+    if (form) btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (email.value == '') showError(email, 'Email is required');
+        else if (!isValidEmail(email.value)) showError(email, 'Email is not valid');
+        else showSuccess(email);
+        if (password.value == '') showError(password, 'Password is required');
+        else showSuccess(password);
+    });
+    if (ifFormRegister) btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (firstName.value == '') showError(firstName, 'First Name is required');
+        else showSuccess(firstName);
+        if (lastName.value == '') showError(lastName, 'Last Name is required');
+        else showSuccess(lastName);
+        if (email.value == '') showError(email, 'Email is required');
+        else if (!isValidEmail(email.value)) showError(email, 'Email is not valid');
+        else showSuccess(email);
+        if (password.value == '') showError(password, 'Password is required');
+        else showSuccess(password);
+        if (password2.value == '') showError(password2, 'Confirm password is required');
+        else if (password.value === password2.value) showError(password2, 'Password not matched');
+        else showSuccess(password2);
+        checkPasswordsMatch(password, password2);
+    });
+}
+exports.default = formValidation;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"6mLAx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function homePage() {
+    const homepage = document.querySelector('.homepage');
+    if (homepage) {
+        async function homePageSections() {
+            const categorySection = document.querySelector('.section__slider');
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>obj = data
+                ).then((obj)=>obj.map((productsCategories)=>{
+                        const getProductsCategories = `\n                        <div class="section__main">\n                        <div class="col-left">\n                            <img src="${productsCategories.imageUrl}" alt="Fruits">\n                        </div>\n                        <div class="col-right">\n                            <h4>${productsCategories.name}</h4>\n                            <p>${productsCategories.description}</p>\n                            <a href="./pages/products.html" class="btn-primary">Explore ${productsCategories.name}</a>\n                        </div>\n                        </div>\n                        `;
+                        categorySection.insertAdjacentHTML('afterend', getProductsCategories);
+                    })
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        homePageSections();
+    }
+}
+exports.default = homePage;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}]},["45BXQ","3iimy"], "3iimy", "parcelRequire921e")
 

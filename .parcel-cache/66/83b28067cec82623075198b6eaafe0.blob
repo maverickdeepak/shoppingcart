@@ -1,0 +1,1 @@
+module.exports = require('./bundle-url').getBundleURL() + "baby-dove.HASH_REF_c52b3c2a120064944269f92b02db6177.jpg";

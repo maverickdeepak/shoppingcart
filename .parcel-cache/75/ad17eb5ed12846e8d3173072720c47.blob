@@ -1,0 +1,23 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function formValidation() {
+    const ifForm = document.querySelector('.login');
+    const form = document.querySelector('.login__form');
+    const email = document.querySelector('.email');
+    const password = document.querySelector('.password');
+    function showError(input, message) {
+        const formControl = email.parentElement;
+        formControl.className = 'input-field error';
+        const small = formControl.querySelector('small');
+        small.innerText = message;
+    }
+    function showSuccess(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-field success';
+    }
+    function checkEmail(input) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        test(input.value.trim());
+    }
+}
+exports.default = formValidation;

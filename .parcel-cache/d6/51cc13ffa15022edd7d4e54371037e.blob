@@ -1,0 +1,38 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function formValidation() {
+    const ifForm = document.querySelector('.login');
+    const form = document.querySelector('.login__form');
+    const email = document.querySelector('.email');
+    const password = document.querySelector('.password');
+    const btn = document.querySelector('.btn');
+    function showError(input, message) {
+        const formControl = email.parentElement;
+        formControl.className = 'input-field error';
+        const small = formControl.querySelector('small');
+        small.innerText = message;
+    }
+    function showSuccess(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-field success';
+    }
+    function checkEmail(input) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (test(input.value.trim())) showSuccess(input);
+        else showError(input, 'Email is not valid!');
+    }
+    function checkLength(input, min, max) {
+        if (input.value.length < min) showError(input, `${getFieldName(input)} must be at least ${min} characters`);
+        else if (input.value.length > max) showError(input, `${getFieldName(input)} must be less than ${max} characters`);
+        else showSuccess(input);
+    }
+    function checkPasswordsMatch(input1, input2) {
+        if (input1.value !== input2.value) showError(input2, 'Passwords do not match');
+    }
+    btn.addEventListener('submit', function(e) {
+        e.preventDefault();
+        checkLength(password, 6, 25);
+        checkEmail(email);
+    });
+}
+exports.default = formValidation;

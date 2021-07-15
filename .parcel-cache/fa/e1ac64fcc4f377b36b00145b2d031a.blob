@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="icon" type="image/png" href="/favicon.HASH_REF_4aa060f178a5b3f18ff4b082d823d808.png">
+    <link rel="stylesheet" href="/index.HASH_REF_456b950554a79bddc1a63ab96a7c07ec.css">
+    
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="/logo.HASH_REF_194daa7462965491f169470a492808e6.png" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/pages/products.html">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="/pages/login.html">SignIn</a></li>
+                    <li><a href="/pages/register.html">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="/cart.HASH_REF_d75ebdce8d7002bb9733e99d65591167.svg" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+    
+<!-------------------- Side Cart Slider End here ---------------->
+    <div class="main">
+        <!-------------------- Side Cart Slider Starts here ---------------->
+    <div class="side-cart">
+        <div class="side-cart__topbar">
+            <div class="side-cart__topbar__heading">
+                <h4>My Cart</h4>
+            </div>
+            <div class="side-cart__topbar__close">
+                <span>X</span>
+            </div>
+        </div>
+        <div class="side-cart__products__container">
+            <div class="emptyCart">
+                <h4>No items in your cart</h4>
+                <p>Your Favourite items are just a click away</p>
+            </div>
+        </div>
+        <div class="side-cart__products__cart">
+            
+        </div>
+        
+    </div>
+        <div class="all-products">
+            <div class="all-products__container">
+                <div class="all-products__container__sidebar">
+                    <ul class="all-products__categories">
+                        <li><a href="#" class="filter" data-id="all">All</a></li>
+                    </ul>
+                </div>
+                <div class="mobile-filter">
+                    <select name="mobile-select" id="mobile-select" class="mobile-select">
+                        <option value="all">All</option>
+                      </select>
+                </div>
+                <div class="all-products__container__product">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="body_opac"></span>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="/pages/register.HASH_REF_4c104f4fb4a099c0c1e8f0f88d7130a5.js"></script>
+</body>
+</html>

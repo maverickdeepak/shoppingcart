@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabka Bazar</title>
+    <link rel="icon" type="image/png" href="/favicon.HASH_REF_4aa060f178a5b3f18ff4b082d823d808.png">
+    <link rel="stylesheet" href="/index.HASH_REF_456b950554a79bddc1a63ab96a7c07ec.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <a href="/">
+                <img src="/logo.HASH_REF_194daa7462965491f169470a492808e6.png" alt="logo">
+            </a>
+            <div class="menu_items_left">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/pages/products.html">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="menu_items_right">
+                <ul>
+                    <li><a href="/pages/login.html">SignIn</a></li>
+                    <li><a href="/pages/register.html">Register</a></li>
+                </ul>
+                <div class="cart">
+                    <img src="/cart.HASH_REF_d75ebdce8d7002bb9733e99d65591167.svg" alt="">
+                    <span class="total_items_InCart">0</span> items
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-------------------- Side Cart Slider Starts here ---------------->
+        <div class="side-cart">
+            <div class="side-cart__topbar">
+                <div class="side-cart__topbar__heading">
+                    <h4>My Cart</h4>
+                </div>
+                <div class="side-cart__topbar__close">
+                    <span>X</span>
+                </div>
+            </div>
+            <div class="side-cart__products__container">
+                
+            </div>
+            <div class="side-cart__products__cart">
+    
+            </div>
+        </div>
+    <!-------------------- Side Cart Slider End here ---------------->
+    <main class="main homepage">
+        <section class="section__slider">
+            <div class="wrapper">
+                <!-- Images Area -->
+                <div class="images-area">
+                    <img src="/offer1.HASH_REF_3fce719a6a94e1e5e6638230148f411f.jpg" alt="Offer 1" class="firstImage">
+                    <img src="/offer2.HASH_REF_e89303c6814ab7b8ce68c47768bb333c.jpg" alt="Offer 2">
+                    <img src="/offer3.HASH_REF_57e1a7f10a6f230c6ef7f4addc89cfe4.jpg" alt="Offer 3">
+                    <img src="/offer4.HASH_REF_c97489216a67e89612a9419dafd4c5ec.jpg" alt="Offer 4">
+                    <img src="/offer5.HASH_REF_c760538e2201c4df0086d486bc4ed837.jpg" alt="Offer 5">
+                    <div class="buttons-area">
+                        <div class="previous-btn">
+                          PREV
+                        </div>
+                        <div class="next-btn">
+                          NEXT
+                        </div>
+                </div>
+                </div>
+                <!-- Buttons Area -->
+                
+                <!-- Pagination Area -->
+                <div class="pagination-area">
+                </div>
+              </div>
+        </section>
+        
+        
+    </main>
+    <span class="body_opac"></span>
+    <footer>
+        <div class="main">
+            <p>Copyright &copy; 2021-2022 Sabka Bazar Supplies Pvt Ltd</p>
+        </div>
+    </footer>
+    <script src="/pages/register.HASH_REF_4c104f4fb4a099c0c1e8f0f88d7130a5.js"></script>
+</body>
+</html>

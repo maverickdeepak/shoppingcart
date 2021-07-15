@@ -1,0 +1,26 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function homePage() {
+    const homepage = document.querySelector('.homepage');
+    if (homepage) {
+        async function homePageSections() {
+            const categorySection = document.querySelector('.section__slider');
+            try {
+                await fetch('http://localhost:5000/categories').then((response)=>response.json()
+                ).then((data)=>obj = data
+                ).then((obj)=>obj.map((productsCategories)=>{
+                        const getProductsCategories = `\n                        <div class="section__main">\n                        <div class="col-left">\n                            <img src="${productsCategories.imageUrl}" alt="Fruits">\n                        </div>\n                        <div class="col-right">\n                            <h4>${productsCategories.name}</h4>\n                            <p>${productsCategories.description}</p>\n                            <a href="./pages/products.html" class="btn-primary">Explore ${productsCategories.name}</a>\n                        </div>\n                        </div>\n                        `;
+                        categorySection.insertAdjacentHTML('afterend', getProductsCategories);
+                    })
+                );
+                let getdiv = document.querySelector('.homepage');
+                getdiv.children[4].classList.add('special');
+                getdiv.children[7].classList.add('special');
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        homePageSections();
+    }
+}
+exports.default = homePage;
