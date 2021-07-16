@@ -22,13 +22,16 @@ export default function homePage() {
                         </div>
                         `;
                         categorySection.insertAdjacentHTML('afterend', getProductsCategories);
-                    }))
+                    }));
+                let getdiv = document.querySelector('.homepage');
+                getdiv.children[4].classList.add('special');
+                getdiv.children[6].classList.add('special');
 
             } catch (error) {
                 console.log(error)
             }
         }
         homePageSections();
-
     }
+
 }

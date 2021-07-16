@@ -83,7 +83,7 @@ export default function slider() {
 
             // Move The images Area First Image
             imagesAreaFirstImage.style.marginLeft = `-${1170 * currentImageMinusOne}px`;
-            console.log(1170 * currentImageMinusOne);
+            // console.log(1170 * currentImageMinusOne);
 
         })();
 
@@ -106,7 +106,7 @@ export default function slider() {
 
                 // Move The images Area First Image
                 imagesAreaFirstImage.style.marginLeft = `-${415 * currentImageMinusOne}px`;
-                console.log(415 * currentImageMinusOne);
+                // console.log(415 * currentImageMinusOne);
             })();
         }
 
@@ -129,7 +129,7 @@ export default function slider() {
 
                 // Move The images Area First Image
                 imagesAreaFirstImage.style.marginLeft = `-${769 * currentImageMinusOne}px`;
-                console.log(769 * currentImageMinusOne);
+                // console.log(769 * currentImageMinusOne);
             })();
         }
 

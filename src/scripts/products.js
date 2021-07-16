@@ -3,6 +3,7 @@ export default function products() {
     let productContainer = document.querySelector('.all-products');
     let categoryContainer = document.querySelector('.all-products__categories');
     let categoryContainerMobile = document.querySelector('.mobile-select');
+    let innerWidth = window.innerWidth <= 540;
     if (productContainer) {
 
         // Function for Call the All Products
@@ -18,12 +19,35 @@ export default function products() {
                         // console.log(product);
                         const getAllProducts = `
                         <div class="single-product" data-id="${product.category}">
+                        ${innerWidth ?
+                                `
+                            <h5>${product.name}</h5>
+                            ` : `
                             <h5>${product.name.substring(0, 20)}</h5>
-                            <img src="${product.imageURL}" alt="${product.name}">
-                            <p class="descriptions">${product.description.substring(0, 100)}</p>
-                            <div class="productBottom">
-                                <p>Rs <span class="price">${product.price}</span></p>
-                                <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>
+                            `
+                            }
+                            
+
+                            <div class="single-product__mobile">
+                            <div class="single-product__image">
+                                <img src="${product.imageURL}" alt="${product.name}">
+                            </div>
+                            <div class="single-product__mobile__description">
+                                <p class="descriptions">${product.description.substring(0, 80)}</p>
+                                ${innerWidth ?
+                                `
+                                <div class="productBottom">
+                                    <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now @MRP Rs.<span class="price">${product.price}</span></a>
+                                </div>
+                                ` : `
+                                <div class="productBottom">
+                                    <p>MRP Rs.<span class="price">${product.price}</span></p>
+                                    <a href="#" class="btn-primary buyButton" onclick="return false;">Buy Now</a>
+                                </div>
+                                `
+                            }
+                                
+                            </div>
                             </div>
                         </div>
                       `;
